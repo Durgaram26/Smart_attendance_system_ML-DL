@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 20px;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .table {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Attendance System</h1>
+        <p class="text-center">Date: {{ datetoday2 }}</p>
+        <p class="text-center">Total Registered Users: {{ totalreg }}</p>
+
+        {% if mess %}
+        <div class="alert alert-warning text-center" role="alert">
+            {{ mess }}
+        </div>
+        {% endif %}
+
+        <div class="text-center">
+            <a href="/start" class="btn btn-primary">Start Attendance</a>
+            <a href="/listusers" class="btn btn-info">List Users</a>
+            <a href="/adduser" class="btn btn-success">Add User</a>
+        </div>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Roll Number</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in range(l) %}
+                <tr>
+                    <td>{{ names[i] }}</td>
+                    <td>{{ rolls[i] }}</td>
+                    <td>{{ times[i] }}</td>
+                    <td>{{ statuses[i] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

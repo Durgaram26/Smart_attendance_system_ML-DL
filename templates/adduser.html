@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 20px;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Add New User</h1>
+        <p class="text-center">Total Registered Users: {{ totalreg }}</p>
+        <p class="text-center">Date: {{ datetoday2 }}</p>
+
+        {% if mess %}
+        <div class="alert alert-success text-center" role="alert">
+            {{ mess }}
+        </div>
+        {% endif %}
+
+        <form action="/adduser" method="POST">
+            <div class="form-group">
+                <label for="newusername">Name:</label>
+                <input type="text" class="form-control" id="newusername" name="newusername" required>
+            </div>
+            <div class="form-group">
+                <label for="newuserid">Roll Number:</label>
+                <input type="text" class="form-control" id="newuserid" name="newuserid" required>
+            </div>
+            <button type="submit" class="btn btn-success">Add User</button>
+        </form>
+
+        <div class="text-center" style="margin-top: 20px;">
+            <a href="/" class="btn btn-primary">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

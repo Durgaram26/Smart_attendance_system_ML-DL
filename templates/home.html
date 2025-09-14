@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .btnreset{
+            background-color:blue;
+            color: aliceblue;
+            padding: 1.3%;
+            border-radius: 5px;
+        }
+        body {
+            padding-top: 20px;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .table {
+            margin-top: 20px;
+        }
+        #stop{
+            margin-top:150px;
+            padding:5px;
+            background-color: rgb(195, 23, 23);
+            color: aliceblue;
+        } 
+        .text-center{
+            padding: 10px;
+            margin: 5px;
+        }
+        .Download{
+            margin-top: 20px;
+            padding: 6px;
+            color: aliceblue;
+            display:inline-block;
+            background-color: rgb(237, 84, 84);
+            border-radius: 5px;
+            
+        }
+        .start{
+            margin-top: 30px;
+            background-color: rgb(19, 191, 56);
+            color: azure;
+            padding: 10px;
+            margin: 5px 0px 0px 0px;
+            border-radius: 5px;
+        }
+        .studattanence{
+            margin:5px 0px 0px 0px;
+            
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Attendance System</h1>
+        <p class="text-center">Date: {{ datetoday2 }}</p>
+        <p class="text-center">Total Registered Users: {{ totalreg }}</p>
+
+        {% if mess %}
+        <div class="alert alert-warning text-center" role="alert">
+            {{ mess }}
+        </div>
+        {% endif %}
+
+        <div class="text-center">
+            <a href="/start" class="start">Start Attendance</a>
+            <a href="/listusers" class="btn btn-info">List Users</a>
+            <a href="/adduser" class="btn btn-success">Add User</a>
+            <a href="/reset_attendance" class="btnreset">Reset Attendance</a>
+            <a href="/download_attendance" class="Download">Download Attendance</a>
+
+            <a href="/stop_attendance" class="studattenance" id="stop">Stop Attendance</a>
+        </div>
+
+        <!-- Display total count of students present and absent -->
+        <div class="text-center mt-4">
+            <h3>Total Students:</h3>
+            <p>Present: {{ present_count }}</p>
+            <p>Absent: {{ absent_count }}</p>
+        </div>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Roll Number</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in range(l) %}
+                <tr>
+                    <td>{{ names[i] }}</td>
+                    <td>{{ rolls[i] }}</td>
+                    <td>{{ times[i] }}</td>
+                    <td>{{ statuses[i] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        
+        
+    </div>
+</body>
+</html>
